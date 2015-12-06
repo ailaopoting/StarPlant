@@ -37,6 +37,7 @@ var DiTitleInfo = (function () {
     //        }
     //    };
     function DiTitleInfo() {
+        this.diLevel = 1; //地块等级
         this.openNum = 1; //开启地块数 
         this.seedList = []; //植物种植项
         this.diInfo = null;

@@ -21,6 +21,10 @@ var DiTileListUI = (function (_super) {
         this.diTileList.push(this.diTile3);
         this.diTileList.push(this.diTile4);
         this.diTileList.push(this.diTile5);
+        this.skillCD0.visible = false;
+        this.skillCD1.visible = false;
+        this.skillCD2.visible = false;
+        //        this.updateLevel();
     };
     p.setFuncDisable = function () {
     };

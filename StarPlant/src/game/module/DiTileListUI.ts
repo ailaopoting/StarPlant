@@ -12,6 +12,15 @@ class DiTileListUI extends egret.gui.SkinnableComponent {
     public diTile4: egret.gui.Button;
     public diTile5: egret.gui.Button;
     
+    public skill0: egret.gui.Button;//点击buff
+    public skill1: egret.gui.Button;//基础buff
+    public skill2: egret.gui.Button;//按住buff
+    
+    public skillCD0: egret.gui.Label;//点击buff cd时间
+    public skillCD1: egret.gui.Label;//基础buff cd时间
+    public skillCD2: egret.gui.Label;//点击buff cd时间
+    
+    
 //    private _callBack: Function;
 
     public constructor() {
@@ -29,6 +38,11 @@ class DiTileListUI extends egret.gui.SkinnableComponent {
         this.diTileList.push(this.diTile3);
         this.diTileList.push(this.diTile4);
         this.diTileList.push(this.diTile5);
+        
+        this.skillCD0.visible = false;
+        this.skillCD1.visible = false;
+        this.skillCD2.visible = false;
+//        this.updateLevel();
     }
 
     public setFuncDisable(): void {

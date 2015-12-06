@@ -10,7 +10,7 @@ class MapProcessor_plant extends MapProcessor{
 	
     private _diTile: DiTileListUI;
     private _bgMusic: egret.Sound;
-    
+    private _contentDepthTimer: egret.Timer;//内容层层级处理，根据y轴排序
     public init(): void 
     {
         SoundManager.getInstance().curSound = RES.getRes("bgSound_mp3");//获取音乐文件
@@ -20,21 +20,62 @@ class MapProcessor_plant extends MapProcessor{
         },this,2000);
         
         this._diTile = new DiTileListUI();
-        this._map.content.addChild(this._diTile );   
-        ModelLocator.getInstance().addEventListener(LogicEvent.RES_ALL_COMPLETE,this.onDiTiledLoaded,this);
+        this._map.ground.addChild(this._diTile);   
+        ModelLocator.getInstance().addEventListener(LogicEvent.RES_ALL_COMPLETE,this.onDiTiledLoaded,this);//地块资源加载完成
         ModelLocator.getInstance().addEventListener(LogicEvent.BUY_DI,this.onBuyDi,this);//购买地块
         ModelLocator.getInstance().addEventListener(LogicEvent.GO_PLANT,this.onNeedPlant,this);//某个地块去种植，参数:植物id、数量、位置
         ModelLocator.getInstance().addEventListener(LogicEvent.SEED_GETER,this.onGrowGeter,this);//收获
         ModelLocator.getInstance().addEventListener(LogicEvent.GO_SELECT_DI,this.onGoSelectDi,this);//买地块进入选中地块
         
         //缺少内容层根据y方向定时跟新层级处理todo
+        this._contentDepthTimer = new egret.Timer(1000);
+        this._contentDepthTimer.addEventListener(egret.TimerEvent.TIMER,this.onContentDepth,this);
+        this._contentDepthTimer.start();
     }
+    
+    private onContentDepth(evt: egret.TimerEvent): void 
+    {
+        console.log("开始排序了");
+        var contentList: egret.Sprite[] = [];
+        for(var i: number = 0;i < this._map.content.numChildren;i++) 
+        {
+            if(this._map.content.getChildAt(i) instanceof egret.Sprite) 
+            {
+                contentList.push(<egret.Sprite>this._map.content.getChildAt(i));
+            }
+        }
+        contentList = contentList.sort(sortBySlotDepth);
+        for(i = 0;i < contentList.length;i++) {
+            this._map.content.setChildIndex(contentList[i],i);
+        }
+      
+        //排序通过y
+        function sortBySlotDepth(a: egret.Sprite,b: egret.Sprite): number {
+            console.log("执行排序了");
+            if(a.y < b.y) {
+                return -1;
+            }
+            else if(a.y > b.y) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+    }
+    
+    private test(): void 
+    {
+        console.log("测试中======");
+    }
+		
     
     private onGoSelectDi(evt:LogicEvent): void 
     {
         ToolBarUI.getInstance().pargeBar.currentPage = <number>evt.data;
         this.diChangeHandle();
     }
+  
     
     private setFuncDisable(): void 
     {
@@ -49,7 +90,7 @@ class MapProcessor_plant extends MapProcessor{
             if(ActorInfo.diTileInfo.seedList[index]) 
             {
                 if(ActorInfo.diTileInfo.seedList[index].curPeriod == 5) {
-                    ActorInfo.curCoinMoney += 10;
+                    ActorInfo.curCoinMoney += Math.floor(10 * (1 + ActorInfo.miAddPower[ActorInfo.diTileInfo.diLevel - 1]));//向下取整
                     ToolBarUI.getInstance().moneyUI.update();
                     console.log("已收获:" + index);
                     ActorInfo.diTileInfo.seedList[index].dispose();
@@ -164,6 +205,186 @@ class MapProcessor_plant extends MapProcessor{
         for(var i: number = 0;i < this._diTile.diTileList.length;i++) {
             this._diTile.diTileList[i].addEventListener(egret.TouchEvent.TOUCH_TAP,this.onDiClick,this);
         }
+        
+//        this._diTile.buyDiLevel.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onBuyDiLevel,this);
+        
+        //技能点击处理
+        this._diTile.skill0.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onSkill0Click,this);//点击加速
+        this._diTile.skill1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onSkill1Click,this);//土地生长加速
+        this._diTile.skill2.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onSkill2Click,this);//按住加速
+    }
+    
+    private onSkill2Click(evt: egret.TouchEvent): void {
+        if(ActorInfo.downPower) {
+            console.log("已有效果不需购买!");
+            return;
+        }
+        var alert: egret.gui.Alert = egret.gui.Alert.show("你确定花费2能量购买按住加速效果吗?","购买",this.buySkill2Buy,"确定","取消",true,true,this);
+        alert.skinName = skin.simple.AlertSkin;
+    }
+
+    private buySkill2Buy(evt: egret.gui.CloseEvent): void {
+        if(evt.detail == egret.gui.Alert.FIRST_BUTTON) {
+            if(ActorInfo.miMoney >= 2) {
+                console.log("按住加速");
+                ActorInfo.miMoney -= 2;
+                ToolBarUI.getInstance().userUI.update();
+                //暂时土地加倍处理,时间60秒处理
+                ActorInfo.downPower = true;
+                ActorInfo.downPowerLeftTime = 60;
+                this.initSkill2Timer();
+                this._timer2.start();
+            } else {
+                var alert: egret.gui.Alert = egret.gui.Alert.show("所需能量不足，购买失败","提示",null,"确定");
+                alert.skinName = skin.simple.AlertSkin;
+            }
+        } else {
+            console.log("取消点击加速");
+        }
+    }
+
+    private initSkill2Timer(): void {
+        if(this._timer2 == null) {
+            this._timer2 = new egret.Timer(1000);
+            this._timer2.addEventListener(egret.TimerEvent.TIMER,this.onSkill2Tick,this);
+            this._timer2.stop();
+        }
+    }
+
+    private onSkill2Tick(evt: egret.TimerEvent): void {
+        ActorInfo.downPowerLeftTime--;
+        
+        if(this._diTile.skillCD2.visible == false) {
+            this._diTile.skillCD2.visible = true;
+        }
+        this._diTile.skillCD2.text = DateUtil.getHMS(ActorInfo.downPowerLeftTime);
+        
+        if(ActorInfo.downPowerLeftTime <= 0) {
+            ActorInfo.downPowerLeftTime = 0;
+            ActorInfo.downPower = false;
+            this._timer2.stop();
+            this._diTile.skillCD2.visible = false;
+        }
+    }
+    
+    private onSkill1Click(evt: egret.TouchEvent): void 
+    {
+        if(ActorInfo.growPower > 0) {
+            console.log("已有效果不需购买!");
+            return;
+        }
+        var alert: egret.gui.Alert = egret.gui.Alert.show("你确定花费2能量购买土地加速效果吗?","购买",this.buySkill1Buy,"确定","取消",true,true,this);
+        alert.skinName = skin.simple.AlertSkin;
+    }
+    
+    private buySkill1Buy(evt: egret.gui.CloseEvent): void {
+        if(evt.detail == egret.gui.Alert.FIRST_BUTTON) {
+            if(ActorInfo.miMoney >= 2) {
+                console.log("土地加速");
+                ActorInfo.miMoney -= 2;
+                ToolBarUI.getInstance().userUI.update();
+                //暂时土地加倍处理,时间60秒处理
+                ActorInfo.growPower = ActorInfo.diGrowBase;
+                ActorInfo.growPowerLeftTime = 60;
+                this.initSkill1Timer();
+                this._timer1.start();
+            } else {
+                var alert: egret.gui.Alert = egret.gui.Alert.show("所需能量不足，购买失败","提示",null,"确定");
+                alert.skinName = skin.simple.AlertSkin;
+            }
+        } else {
+            console.log("取消点击加速");
+        }
+    }
+
+    private initSkill1Timer(): void {
+        if(this._timer1 == null) {
+            this._timer1 = new egret.Timer(1000);
+            this._timer1.addEventListener(egret.TimerEvent.TIMER,this.onSkill1Tick,this);
+            this._timer1.stop();
+        }
+    }
+
+    private onSkill1Tick(evt: egret.TimerEvent): void {
+        ActorInfo.growPowerLeftTime--;
+        
+        if(this._diTile.skillCD1.visible == false) {
+            this._diTile.skillCD1.visible = true;
+        }
+        this._diTile.skillCD1.text = DateUtil.getHMS(ActorInfo.growPowerLeftTime);
+        
+        if(ActorInfo.growPowerLeftTime <= 0) {
+            ActorInfo.growPowerLeftTime = 0;
+            ActorInfo.growPower = 0;
+            this._timer1.stop();
+            this._diTile.skillCD1.visible = false;
+        }
+    }
+    
+    private onSkill0Click(evt: egret.TouchEvent): void 
+    {
+        if(ActorInfo.clickPower > 0) 
+        {
+            console.log("已有效果不需购买!");
+            return;
+        }
+        var alert: egret.gui.Alert = egret.gui.Alert.show("你确定花费2能量购买点击加速效果吗?","购买",this.buySkill0Buy,"确定","取消",true,true,this);
+        alert.skinName = skin.simple.AlertSkin;
+    }
+        
+    private _timer0: egret.Timer;
+    private _timer1: egret.Timer;
+    private _timer2: egret.Timer;
+    private buySkill0Buy(evt: egret.gui.CloseEvent): void {
+        if(evt.detail == egret.gui.Alert.FIRST_BUTTON) {
+            if(ActorInfo.miMoney >= 2) {
+                console.log("点击加速");
+                ActorInfo.miMoney -= 2;
+                ToolBarUI.getInstance().userUI.update();
+                //暂时点击加倍处理,时间60秒处理
+                ActorInfo.clickPower = ActorInfo.normalClick;
+                ActorInfo.clickPowerLeftTime = 60;
+                this.initSkill0Timer();
+                this._timer0.start();
+            } else {
+                var alert: egret.gui.Alert = egret.gui.Alert.show("所需能量不足，购买失败","提示",null,"确定");
+                alert.skinName = skin.simple.AlertSkin;
+            }
+        } else {
+            console.log("取消点击加速");
+        }
+    }
+    
+    private initSkill0Timer(): void {
+        if(this._timer0 == null) 
+        {
+            this._timer0 = new egret.Timer(1000);
+            this._timer0.addEventListener(egret.TimerEvent.TIMER,this.onSkill0Tick,this);
+            this._timer0.stop();
+        }
+    }
+    
+    private onSkill0Tick(evt:egret.TimerEvent): void
+    {
+        ActorInfo.clickPowerLeftTime--;
+        
+        if(this._diTile.skillCD0.visible == false) 
+        {
+            this._diTile.skillCD0.visible = true;
+        }
+        this._diTile.skillCD0.text = DateUtil.getHMS(ActorInfo.clickPowerLeftTime);
+        
+        if(ActorInfo.clickPowerLeftTime <= 0) 
+        {
+            this._diTile.skillCD0.visible = false;
+            ActorInfo.clickPowerLeftTime = 0;
+            ActorInfo.clickPower = 0; 
+            this._timer0.stop();
+        }
+    }
+    
+    private onAddDiBtn(evt: egret.TouchEvent): void {
+
     }
     
     private onDiClick(evt: egret.TouchEvent): void {

@@ -4,6 +4,7 @@
  *
  */
 class DiTitleInfo {
+    public diLevel: number = 1;//地块等级
     public openNum: number = 1;//开启地块数 
     
     public seedList: Seed[] = [];//植物种植项

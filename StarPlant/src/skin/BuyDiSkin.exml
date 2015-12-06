@@ -6,15 +6,19 @@
 <e:State name="normal"/>
 <e:State name="disabled"/>
 </e:states>
-	<e:UIAsset source="uiBgStyle1_png" scale9Grid="12,17,271,244" x="109" y="147" height="338"/>
-	<e:UIAsset source="kuang_png" x="121" y="422" width="271"/>
-	<e:Button id="goDi" skinName="@ButtonSkin('btnStyle1_png')" height="28" textAlign="center" width="85" label="前往" x="125" y="434" bold="true" textColor="0xE9FE08" size="18"/>
-	<e:Button id="goPlant" skinName="@ButtonSkin('btnStyle1_png')" textColor="0xE9FE08" height="28" textAlign="center" bold="true" width="85" label="一键种" x="215" y="434" size="18"/>
-	<e:Button id="goGet" width="85" textColor="0xE9FE08" textAlign="center" bold="true" skinName="@ButtonSkin('btnStyle1_png')" label="一键收" height="28" x="304" y="434" size="18"/>
-	<e:UIAsset source="resIcon_png" x="230" y="388"/>
-	<e:Button id="addDiBtn" skinName="@ButtonSkin('buyDiBlockMark_up_png','buyDiBlockMark_down_png')" x="131" y="342"/>
-	<e:Button skinName="@ButtonSkin('closeBtn_png')" width="29" height="25" id="closeBtn" x="376" y="145"/>
-	<e:Scroller id="scroller" width="264" height="223" x="125" y="168">
+	<e:UIAsset source="uiBgStyle1_png" scale9Grid="12,17,271,244" height="338" width="301" x="106" y="149"/>
+	<e:UIAsset source="kuang_png" width="277" x="116" y="413"/>
+	<e:Button id="addDiBtn" skinName="@ButtonSkin('buyDiBlockMark_up_png','buyDiBlockMark_down_png')" width="44" height="44" x="128" y="349"/>
+	<e:Button skinName="@ButtonSkin('closeBtn_png')" width="29" height="25" id="closeBtn" x="370" y="158"/>
+	<e:Scroller id="scroller" width="264" height="223" x="122" y="173">
 		<e:Group id="group" width="262" height="221"/>
 	</e:Scroller>
+	<e:Label textColor="0x000000" text="地块等级" bold="true" size="14" x="125" y="402"/>
+	<e:Label textColor="0x000000" text="收获加成" bold="true" size="14" x="277" y="402"/>
+	<e:Label textColor="0xF91E05" id="diLevel" bold="true" width="44" text="Lv1" textAlign="center" verticalAlign="middle" size="14" x="187" y="402"/>
+	<e:Label id="moneyAdd" verticalAlign="middle" textColor="0xF91E05" text="0%" textAlign="center" bold="true" width="44" size="14" x="342" y="402"/>
+	<e:Button skinName="@ButtonSkin('buyDiBlockMark_up_png','buyDiBlockMark_down_png')" id="buyDiLevel" width="19" height="17" x="234" y="403"/>
+	<e:Button id="goDi" skinName="@ButtonSkin('btnStyle1_png')" textColor="0xE9FE08" height="30" bold="true" width="85" label="前往" size="18" verticalAlign="middle" x="125" y="432"/>
+	<e:Button id="goPlant" skinName="@ButtonSkin('btnStyle1_png')" textColor="0xE9FE08" height="30" bold="true" width="85" label="一键种" size="18" verticalAlign="middle" x="212" y="432"/>
+	<e:Button id="goGet" width="85" textColor="0xE9FE08" height="30" bold="true" skinName="@ButtonSkin('btnStyle1_png')" label="一键收" size="18" verticalAlign="middle" x="301" y="432"/>
 </e:Skin>

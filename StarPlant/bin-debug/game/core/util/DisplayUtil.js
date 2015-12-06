@@ -14,7 +14,7 @@ var DisplayUtil = (function () {
         if (curTarget.parent == null) {
             return;
         }
-        if (LayerManger.uiLayer.contains(curTarget) || LayerManger.uiLayer.contains(curTarget.parent)) {
+        if (curTarget instanceof egret.gui.SkinnableComponent || curTarget instanceof egret.gui.SkinnableContainer) {
             curTarget.parent.removeElement(curTarget);
         }
         else {

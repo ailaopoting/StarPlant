@@ -6,11 +6,17 @@
 		<e:State name="normal"/>
 		<e:State name="disabled"/>
 	</e:states>
-	<e:UIAsset source="di_png" x="11" y="251"/>
-	<e:Button id="diTile0" label="按钮" x="30" y="262" skinName="@ButtonSkin('btnStyle1_png')" width="114" height="81" alpha="0"/>
-	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="114" label="按钮" height="81" alpha="0" id="diTile1" x="146" y="262"/>
-	<e:Button width="114" id="diTile2" skinName="@ButtonSkin('btnStyle1_png')" label="按钮" height="81" alpha="0" x="39" y="345"/>
-	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="114" label="按钮" height="81" alpha="0" id="diTile3" x="160" y="349"/>
-	<e:Button width="128" id="diTile4" skinName="@ButtonSkin('btnStyle1_png')" label="按钮" height="104" alpha="0" x="39" y="444"/>
-	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="142" label="按钮" height="104" alpha="0" id="diTile5" x="176" y="442"/>
+	<e:UIAsset source="di_png" x="11" y="231"/>
+	<e:Button id="diTile0" label="按钮" x="30" skinName="@ButtonSkin('btnStyle1_png')" width="114" height="81" alpha="0" y="242"/>
+	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="114" label="按钮" height="81" alpha="0" id="diTile1" x="146" y="242"/>
+	<e:Button width="114" id="diTile2" skinName="@ButtonSkin('btnStyle1_png')" label="按钮" height="81" alpha="0" x="39" y="325"/>
+	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="114" label="按钮" height="81" alpha="0" id="diTile3" x="160" y="329"/>
+	<e:Button width="128" id="diTile4" skinName="@ButtonSkin('btnStyle1_png')" label="按钮" height="104" alpha="0" x="39" y="424"/>
+	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="142" label="按钮" height="104" alpha="0" id="diTile5" x="176" y="422"/>
+	<e:Button id="skill0" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF8EF06" height="28" bold="true" width="64" label="点击Up" size="15" textAlign="center" verticalAlign="middle" x="41" y="591"/>
+	<e:Button id="skill1" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF8EF06" height="28" bold="true" width="64" label="基础up" size="15" textAlign="center" verticalAlign="middle" y="591" x="162"/>
+	<e:Button id="skill2" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF8EF06" bold="true" width="64" label="按住up" height="28" textAlign="center" verticalAlign="middle" size="15" y="592" x="282"/>
+	<e:Label id="skillCD0" text="00:00" textColor="0x0E4401" size="15" bold="true" textAlign="center" verticalAlign="middle" width="66" x="41" y="645"/>
+	<e:Label id="skillCD1" textColor="0x0E4401" text="00:00" textAlign="center" bold="true" width="66" size="15" verticalAlign="middle" y="646" x="162"/>
+	<e:Label id="skillCD2" textColor="0x0E4401" text="00:00" textAlign="center" bold="true" width="66" size="15" verticalAlign="middle" y="647" x="281"/>
 </e:Skin>

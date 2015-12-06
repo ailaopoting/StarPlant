@@ -44,7 +44,7 @@ var SeedItemUI = (function (_super) {
             //数据模拟种子todo
             var nameList = ["神器:", "机甲:", "神兽:", "植物"];
             for (var j = 0; j < 10; j++) {
-                item.push(new SeedItem({ id: 10000, source: "10000_1_png", num: 10, introduce: nameList[i] + "这是一颗神奇的种子" }));
+                item.push(new SeedItem({ id: 10000, source: "10000_5_png", num: 10, introduce: nameList[i] + "这是一颗神奇的种子" }));
             }
         }
         console.log("种子列表已经实例化");
@@ -103,7 +103,7 @@ var SeedItemUI = (function (_super) {
         if (this.otherInitData != null) {
             var allPosArr;
             if (this.otherInitData.clickIndex != null) {
-                posArr = this.getCanPos(this.otherInitData.clickIndex);
+                posArr = this.getCanPos(Math.floor(this.otherInitData.clickIndex / 6));
             }
             if (this.otherInitData.buyBlockIndex != null) {
                 posArr = this.getCanPos(this.otherInitData.buyBlockIndex);

@@ -7,7 +7,7 @@ var skin;
             function AlertSkin() {
                 _super.call(this);
                 this.__s = egret.gui.setProperties;
-                this.__s(this, ["maxWidth", "minHeight", "minWidth"], [710, 230, 370]);
+                this.__s(this, ["maxWidth", "minHeight", "minWidth", "width"], [710, 230, 370, 284]);
                 this.elementsContent = [this.__1_i(), this.moveArea_i(), this.contentDisplay_i(), this.__5_i()];
             }
             var d = __define,c=AlertSkin;p=c.prototype;
@@ -18,7 +18,7 @@ var skin;
             );
             p.__2_i = function () {
                 var t = new egret.gui.UIAsset();
-                this.__s(t, ["percentHeight", "source", "percentWidth"], [100, "panel_headeback_png", 100]);
+                this.__s(t, ["percentHeight", "width"], [100, 288]);
                 return t;
             };
             p.__3_i = function () {
@@ -26,7 +26,7 @@ var skin;
                 t.setStyle("size", 25);
                 t.setStyle("textAlign", "center");
                 t.setStyle("verticalAlign", "middle");
-                this.__s(t, ["source", "width", "x", "y"], ["kuang_png", 270, 9, 43]);
+                this.__s(t, ["source", "width", "x", "y"], ["kuang_png", 268, 7, 43]);
                 return t;
             };
             p.__4_i = function () {
@@ -73,13 +73,13 @@ var skin;
             };
             p.__1_i = function () {
                 var t = new egret.gui.UIAsset();
-                this.__s(t, ["height", "source", "width"], [216, "uiBgStyle1_png", 293]);
+                this.__s(t, ["height", "source", "width", "x"], [216, "uiBgStyle1_png", 293, 0]);
                 return t;
             };
             p.titleDisplay_i = function () {
                 var t = new egret.gui.Label();
                 this.titleDisplay = t;
-                this.__s(t, ["bold", "fontFamily", "height", "maxDisplayedLines", "minHeight", "size", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, "宋体", 30, 1, 28, 24, "center", 0x000000, "middle", 271, 6, 13]);
+                this.__s(t, ["bold", "fontFamily", "height", "maxDisplayedLines", "minHeight", "size", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, "宋体", 30, 1, 28, 24, "center", 0x000000, "middle", 271, 7, 13]);
                 return t;
             };
             AlertSkin._skinParts = ["titleDisplay", "moveArea", "contentDisplay", "firstButton", "secondButton"];

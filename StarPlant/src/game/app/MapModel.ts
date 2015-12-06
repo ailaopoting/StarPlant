@@ -85,8 +85,8 @@ class MapModel extends egret.DisplayObjectContainer{
     private onGetMapRes(data:any): void 
     {
         this._map.texture = data;
-        this._ground.addChild(this._map);
-        ModelLocator.getInstance().dispatchEvent(new LogicEvent(LogicEvent.COMPLETE,false,false));
+        this._ground.addChildAt(this._map,0);
+        ModelLocator.getInstance().dispatchEvent(new LogicEvent(LogicEvent.COMPLETE_SCENE,false,false));
     }
     
     public disposeMap(): void

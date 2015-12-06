@@ -24,13 +24,14 @@ var skin;
             );
             p.__4_i = function () {
                 var t = new egret.gui.UIAsset();
-                this.__s(t, ["height", "scale9Grid", "source", "width", "x", "y"], [42, egret.gui.getScale9Grid("10,9,58,59"), "borderStyle2_png", 42, 5, 0]);
+                this.__s(t, ["height", "scale9Grid", "source", "width", "x", "y"], [42, egret.gui.getScale9Grid("10,9,58,59"), "borderStyle2_png", 42, 5, -1]);
                 return t;
             };
             p.borderSelected_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.borderSelected = t;
-                this.__s(t, ["source", "x", "y"], ["borderSelectedStyle1_png", -1, -1]);
+                t.setStyle("textColor", 0xFFFFFF);
+                this.__s(t, ["height", "source", "width", "x", "y"], [53, "borderSelectedStyle1_png", 229, -5, -7]);
                 return t;
             };
             p.num_i = function () {
@@ -42,7 +43,7 @@ var skin;
             p.seedIcon_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.seedIcon = t;
-                this.__s(t, ["height", "width", "x", "y"], [31, 32, 10, 4]);
+                this.__s(t, ["height", "width", "x", "y"], [32, 34, 11, 5]);
                 return t;
             };
             p.seedInfo_i = function () {
@@ -53,7 +54,7 @@ var skin;
             };
             p.__3_i = function () {
                 var t = new egret.gui.UIAsset();
-                this.__s(t, ["scale9Grid", "source", "x", "y"], [egret.gui.getScale9Grid("2,2,216,38"), "borderStyle1_png", -1, -1]);
+                this.__s(t, ["height", "scale9Grid", "source", "width", "x", "y"], [53, egret.gui.getScale9Grid("2,2,216,38"), "borderStyle1_png", 231, -5, -6]);
                 return t;
             };
             SeedItemSkin._skinParts = ["seedInfo", "num", "borderSelected", "seedIcon"];

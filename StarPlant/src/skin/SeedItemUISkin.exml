@@ -6,20 +6,20 @@
 		<e:State name="normal"/>
 		<e:State name="disabled"/>
 	</e:states>
-	<e:UIAsset source="uiBgStyle2_png" scale9Grid="14,52,250,288" x="109" y="216"/>
-	<e:UIAsset source="kuang_png" width="252" x="122" y="517"/>
-	<e:Button id="tabBtn0" label="神器" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" width="64" height="28" size="22" textColor="0xF8EF06" verticalAlign="justify" bold="true" x="123" y="236"/>
-	<e:Button id="tabBtn1" verticalAlign="justify" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF8EF06" height="28" bold="true" width="64" label="机甲" size="22" x="187" y="236"/>
-	<e:Button id="tabBtn2" verticalAlign="justify" width="64" textColor="0xF8EF06" size="22" bold="true" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" label="神兽" height="28" x="251" y="236"/>
-	<e:Button id="tabBtn3" verticalAlign="justify" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF8EF06" height="28" bold="true" width="64" label="植物" size="22" x="313" y="236"/>
-	<e:Button id="goPlant" label="种植" skinName="@ButtonSkin('btnStyle1_png')" width="85" height="28" size="20" textAlign="center" x="144" y="525"/>
-	<e:Button id="goAllPlant" skinName="@ButtonSkin('btnStyle1_png')" height="28" width="85" label="一键全种" size="20" textAlign="center" x="269" y="527"/>
-	<e:Button id="closeBtn" x="361" y="210" skinName="@ButtonSkin('closeBtn_png')" width="29" height="25"/>
-	<e:Scroller id="scroller" width="246" height="244" x="125" y="271">
+	<e:UIAsset source="uiBgStyle2_png" scale9Grid="14,52,250,288" x="109" y="216" width="299" height="393"/>
+	<e:UIAsset source="kuang_png" width="272" x="122" y="529"/>
+	<e:Button id="tabBtn0" label="神器" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" width="71" height="31" textColor="0xF8EF06" bold="true" y="261" size="18" verticalAlign="middle" textAlign="center" x="126"/>
+	<e:Button id="tabBtn1" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF8EF06" height="31" bold="true" width="71" label="机甲" y="261" size="18" verticalAlign="middle" textAlign="center" x="191"/>
+	<e:Button id="tabBtn2" width="71" textColor="0xF8EF06" bold="true" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" label="神兽" height="31" y="261" size="18" verticalAlign="middle" textAlign="center" x="256"/>
+	<e:Button id="tabBtn3" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF8EF06" height="31" bold="true" width="71" label="植物" size="18" verticalAlign="middle" textAlign="center" x="321" y="261"/>
+	<e:Button id="goPlant" label="种植" skinName="@ButtonSkin('btnStyle1_png')" width="85" height="34" x="145" verticalAlign="middle" size="18" y="550"/>
+	<e:Button id="goAllPlant" skinName="@ButtonSkin('btnStyle1_png')" height="34" width="85" label="一键全种" x="280" verticalAlign="middle" size="18" y="550"/>
+	<e:Button id="closeBtn" skinName="@ButtonSkin('closeBtn_png')" width="29" height="25" x="367" y="231"/>
+	<e:Scroller id="scroller" width="246" height="244" y="293" x="133">
 		<e:Group id="group" width="70" height="44"/>
 	</e:Scroller>
-	<e:Button id="tabSelected0" height="28" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" bold="true" width="64" label="神器" size="22" verticalAlign="justify" x="123" y="235" textColor="0xF84F06"/>
-	<e:Button id="tabSelected1" height="28" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" bold="true" width="64" label="机甲" verticalAlign="justify" size="22" x="186" y="235" textColor="0xF84F06"/>
-	<e:Button id="tabSelected2" verticalAlign="justify" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" bold="true" width="64" label="神兽" size="22" height="28" x="251" y="235" textColor="0xF82A06"/>
-	<e:Button id="tabSelected3" height="28" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" bold="true" width="64" label="植物" verticalAlign="justify" size="22" x="314" y="235" textColor="0xF84F06"/>
+	<e:Button verticalAlign="middle" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF84F06" bold="true" label="神器" size="18" textAlign="center" width="71" height="31" id="tabSelected0" x="127" y="261"/>
+	<e:Button verticalAlign="middle" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF84F06" bold="true" label="机甲" size="18" textAlign="center" width="71" height="31" id="tabSelected1" x="192" y="261"/>
+	<e:Button verticalAlign="middle" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF82A06" bold="true" label="神兽" size="18" textAlign="center" width="71" height="31" id="tabSelected2" x="256" y="261"/>
+	<e:Button verticalAlign="middle" skinName="@ButtonSkin('btnStyle1_png','btnStyle1_png','btnStyle1_png')" textColor="0xF84F06" bold="true" label="植物" size="18" textAlign="center" width="71" height="31" id="tabSelected3" x="321" y="261"/>
 </e:Skin>

@@ -45,7 +45,16 @@ class Seed extends egret.Sprite{
     
     private onGrow(evt:egret.TimerEvent): void 
     {
-        this._curPoint++;
+        this._curPoint += ActorInfo.diGrowBase + ActorInfo.growPower;
+        if(ActorInfo.growPower > 0) 
+        {
+            console.log("土地效果加成中...");
+        }
+        if(ActorInfo.isDowAction && ActorInfo.downPower) 
+        {
+            this._curPoint += ActorInfo.DOWN_ADD_VAL;
+            console.log("按下效果加成中...");
+        }
         this.growStateHandle();
     }
     
@@ -118,8 +127,11 @@ class Seed extends egret.Sprite{
     
     private onNormalAdd(evt: LogicEvent): void 
     {
-        console.log("点击加速了!!!");
-        this._curPoint++;
+        this._curPoint += ActorInfo.normalClick + ActorInfo.clickPower;
+        if(ActorInfo.clickPower > 0) 
+        {
+            console.log("点击效果加成中...");
+        }
         this.growStateHandle();
     }
     

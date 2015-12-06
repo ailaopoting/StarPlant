@@ -8,15 +8,15 @@
 </e:states>
 	<e:Button id="giftBtn" width="51" enabled="true" textColor="0x150707" size="20" left="326" horizontalCenter="101.5" top="54" bottom="698" skinName="@ButtonSkin('giftBtn_up_png','giftBtn_down_png','giftBtn_disable_png')"/>
 	<e:Button id="setBtn" skinName="@ButtonSkin('set_up_png','set_down_png')" width="40" height="38" y="58" x="454"/>
-	<e:Button id="goPkBtn" x="388" y="118" skinName="@ButtonSkin('goPk_up_png','goPk_down_png','goPk_disable_png')"/>
-	<e:Button id="addSpeedBtn" x="309" y="217" skinName="@ButtonSkin('addSpeed_up_png','addSpeed_down_png','addSpeed_disable_png')"/>
-	<e:Button id="nextDiBtn" width="38" skinName="@ButtonSkin('diNextBtn_up_png','diNextBtn_down_png','diNextBtn_disable_png')" x="315" y="412" height="40"/>
+	<e:Button id="goPkBtn" skinName="@ButtonSkin('goPk_up_png','goPk_down_png','goPk_disable_png')" x="411" y="145"/>
+	<e:Button id="addSpeedBtn" y="217" skinName="@ButtonSkin('addSpeed_up_png','addSpeed_down_png','addSpeed_disable_png')" width="199" height="203" x="290"/>
+	<e:Button id="nextDiBtn" width="38" skinName="@ButtonSkin('diNextBtn_up_png','diNextBtn_down_png','diNextBtn_disable_png')" height="40" x="242" y="545"/>
 	<e:Button id="goDoorBtn" x="264" y="682" skinName="@ButtonSkin('goDoor_up_png','goDoor_down_png','goDoor_disable_png')"/>
 	<e:Button id="gloryBtn" x="139" y="682" skinName="@ButtonSkin('glory_up_png','glory_down_png','glory_disable_png')"/>
 	<e:Button id="shopBtn" x="15" y="680" skinName="@ButtonSkin('shop_up_png','shop_down_png')"/>
-	<e:Button id="preDiBtn" width="37" skinName="@ButtonSkin('diPreBtn_disable_png','diPreBtn_down_png','diPreBtn_disable_png')" x="0" y="417" height="37"/>
+	<e:Button id="preDiBtn" width="37" skinName="@ButtonSkin('diPreBtn_disable_png','diPreBtn_down_png','diPreBtn_disable_png')" height="37" x="80" y="548"/>
 	<e:Button id="rankBtn" x="388" y="686" skinName="@ButtonSkin('rank_up_png','rank_down_png','rank_disable_png')"/>
 	<e:Button id="helpBtn" width="44" height="41" y="56" x="393" skinName="@ButtonSkin('help_up_png','help_down_png')"/>
 	<e:Button id="eventTip" skinName="@ButtonSkin('eventTip_up_png','eventTip_down_png')" x="250" y="63"/>
-	<e:Button id="buyDi" skinName="@ButtonSkin('buyDi_up_png','buyDi_down_png')" x="357" y="416"/>
+	<e:Button id="buyDi" skinName="@ButtonSkin('buyDi_up_png','buyDi_down_png')" x="420" y="434"/>
 </e:Skin>

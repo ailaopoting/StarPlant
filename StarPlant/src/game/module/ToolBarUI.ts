@@ -72,10 +72,21 @@ class ToolBarUI extends egret.gui.SkinnableComponent
     {
         console.log("添加事件了==================");
         this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onShopBtn,this);
-        this.addSpeedBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onAddSpeed,this);
+        this.addSpeedBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onAddSpeed,this);//加速点击
+        this.addSpeedBtn.addEventListener(egret.TouchEvent.TOUCH_BEGIN,this.onLastAddSpeedDwon,this);//加速按下中
+        this.addSpeedBtn.addEventListener(egret.TouchEvent.TOUCH_END,this.onLastAddSpeedUp,this);//加速抬起
         this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onHelp,this);
         this.setBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onSet,this);
         this.buyDi.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onBuyDi,this);
+    }
+    
+    private onLastAddSpeedDwon(evt: egret.TouchEvent): void 
+    {
+        ActorInfo.isDowAction = true;
+    }
+    
+    private onLastAddSpeedUp(evt: egret.TouchEvent): void {
+        ActorInfo.isDowAction = false;
     }
     
     private onAddSpeed(evt: egret.TouchEvent): void 

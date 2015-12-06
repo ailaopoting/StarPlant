@@ -18,13 +18,45 @@ var MapProcessor_plant = (function (_super) {
             SoundManager.getInstance().curChanel = SoundManager.getInstance().curSound.play(0, 0); //循环播放背景音乐
         }, this, 2000);
         this._diTile = new DiTileListUI();
-        this._map.content.addChild(this._diTile);
-        ModelLocator.getInstance().addEventListener(LogicEvent.RES_ALL_COMPLETE, this.onDiTiledLoaded, this);
+        this._map.ground.addChild(this._diTile);
+        ModelLocator.getInstance().addEventListener(LogicEvent.RES_ALL_COMPLETE, this.onDiTiledLoaded, this); //地块资源加载完成
         ModelLocator.getInstance().addEventListener(LogicEvent.BUY_DI, this.onBuyDi, this); //购买地块
         ModelLocator.getInstance().addEventListener(LogicEvent.GO_PLANT, this.onNeedPlant, this); //某个地块去种植，参数:植物id、数量、位置
         ModelLocator.getInstance().addEventListener(LogicEvent.SEED_GETER, this.onGrowGeter, this); //收获
         ModelLocator.getInstance().addEventListener(LogicEvent.GO_SELECT_DI, this.onGoSelectDi, this); //买地块进入选中地块
         //缺少内容层根据y方向定时跟新层级处理todo
+        this._contentDepthTimer = new egret.Timer(1000);
+        this._contentDepthTimer.addEventListener(egret.TimerEvent.TIMER, this.onContentDepth, this);
+        this._contentDepthTimer.start();
+    };
+    p.onContentDepth = function (evt) {
+        console.log("开始排序了");
+        var contentList = [];
+        for (var i = 0; i < this._map.content.numChildren; i++) {
+            if (this._map.content.getChildAt(i) instanceof egret.Sprite) {
+                contentList.push(this._map.content.getChildAt(i));
+            }
+        }
+        contentList = contentList.sort(sortBySlotDepth);
+        for (i = 0; i < contentList.length; i++) {
+            this._map.content.setChildIndex(contentList[i], i);
+        }
+        //排序通过y
+        function sortBySlotDepth(a, b) {
+            console.log("执行排序了");
+            if (a.y < b.y) {
+                return -1;
+            }
+            else if (a.y > b.y) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+    };
+    p.test = function () {
+        console.log("测试中======");
     };
     p.onGoSelectDi = function (evt) {
         ToolBarUI.getInstance().pargeBar.currentPage = evt.data;
@@ -37,7 +69,7 @@ var MapProcessor_plant = (function (_super) {
         if (index != -1) {
             if (ActorInfo.diTileInfo.seedList[index]) {
                 if (ActorInfo.diTileInfo.seedList[index].curPeriod == 5) {
-                    ActorInfo.curCoinMoney += 10;
+                    ActorInfo.curCoinMoney += Math.floor(10 * (1 + ActorInfo.miAddPower[ActorInfo.diTileInfo.diLevel - 1])); //向下取整
                     ToolBarUI.getInstance().moneyUI.update();
                     console.log("已收获:" + index);
                     ActorInfo.diTileInfo.seedList[index].dispose();
@@ -131,6 +163,160 @@ var MapProcessor_plant = (function (_super) {
         for (var i = 0; i < this._diTile.diTileList.length; i++) {
             this._diTile.diTileList[i].addEventListener(egret.TouchEvent.TOUCH_TAP, this.onDiClick, this);
         }
+        //        this._diTile.buyDiLevel.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onBuyDiLevel,this);
+        //技能点击处理
+        this._diTile.skill0.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSkill0Click, this); //点击加速
+        this._diTile.skill1.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSkill1Click, this); //土地生长加速
+        this._diTile.skill2.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSkill2Click, this); //按住加速
+    };
+    p.onSkill2Click = function (evt) {
+        if (ActorInfo.downPower) {
+            console.log("已有效果不需购买!");
+            return;
+        }
+        var alert = egret.gui.Alert.show("你确定花费2能量购买按住加速效果吗?", "购买", this.buySkill2Buy, "确定", "取消", true, true, this);
+        alert.skinName = skin.simple.AlertSkin;
+    };
+    p.buySkill2Buy = function (evt) {
+        if (evt.detail == egret.gui.Alert.FIRST_BUTTON) {
+            if (ActorInfo.miMoney >= 2) {
+                console.log("按住加速");
+                ActorInfo.miMoney -= 2;
+                ToolBarUI.getInstance().userUI.update();
+                //暂时土地加倍处理,时间60秒处理
+                ActorInfo.downPower = true;
+                ActorInfo.downPowerLeftTime = 60;
+                this.initSkill2Timer();
+                this._timer2.start();
+            }
+            else {
+                var alert = egret.gui.Alert.show("所需能量不足，购买失败", "提示", null, "确定");
+                alert.skinName = skin.simple.AlertSkin;
+            }
+        }
+        else {
+            console.log("取消点击加速");
+        }
+    };
+    p.initSkill2Timer = function () {
+        if (this._timer2 == null) {
+            this._timer2 = new egret.Timer(1000);
+            this._timer2.addEventListener(egret.TimerEvent.TIMER, this.onSkill2Tick, this);
+            this._timer2.stop();
+        }
+    };
+    p.onSkill2Tick = function (evt) {
+        ActorInfo.downPowerLeftTime--;
+        if (this._diTile.skillCD2.visible == false) {
+            this._diTile.skillCD2.visible = true;
+        }
+        this._diTile.skillCD2.text = DateUtil.getHMS(ActorInfo.downPowerLeftTime);
+        if (ActorInfo.downPowerLeftTime <= 0) {
+            ActorInfo.downPowerLeftTime = 0;
+            ActorInfo.downPower = false;
+            this._timer2.stop();
+            this._diTile.skillCD2.visible = false;
+        }
+    };
+    p.onSkill1Click = function (evt) {
+        if (ActorInfo.growPower > 0) {
+            console.log("已有效果不需购买!");
+            return;
+        }
+        var alert = egret.gui.Alert.show("你确定花费2能量购买土地加速效果吗?", "购买", this.buySkill1Buy, "确定", "取消", true, true, this);
+        alert.skinName = skin.simple.AlertSkin;
+    };
+    p.buySkill1Buy = function (evt) {
+        if (evt.detail == egret.gui.Alert.FIRST_BUTTON) {
+            if (ActorInfo.miMoney >= 2) {
+                console.log("土地加速");
+                ActorInfo.miMoney -= 2;
+                ToolBarUI.getInstance().userUI.update();
+                //暂时土地加倍处理,时间60秒处理
+                ActorInfo.growPower = ActorInfo.diGrowBase;
+                ActorInfo.growPowerLeftTime = 60;
+                this.initSkill1Timer();
+                this._timer1.start();
+            }
+            else {
+                var alert = egret.gui.Alert.show("所需能量不足，购买失败", "提示", null, "确定");
+                alert.skinName = skin.simple.AlertSkin;
+            }
+        }
+        else {
+            console.log("取消点击加速");
+        }
+    };
+    p.initSkill1Timer = function () {
+        if (this._timer1 == null) {
+            this._timer1 = new egret.Timer(1000);
+            this._timer1.addEventListener(egret.TimerEvent.TIMER, this.onSkill1Tick, this);
+            this._timer1.stop();
+        }
+    };
+    p.onSkill1Tick = function (evt) {
+        ActorInfo.growPowerLeftTime--;
+        if (this._diTile.skillCD1.visible == false) {
+            this._diTile.skillCD1.visible = true;
+        }
+        this._diTile.skillCD1.text = DateUtil.getHMS(ActorInfo.growPowerLeftTime);
+        if (ActorInfo.growPowerLeftTime <= 0) {
+            ActorInfo.growPowerLeftTime = 0;
+            ActorInfo.growPower = 0;
+            this._timer1.stop();
+            this._diTile.skillCD1.visible = false;
+        }
+    };
+    p.onSkill0Click = function (evt) {
+        if (ActorInfo.clickPower > 0) {
+            console.log("已有效果不需购买!");
+            return;
+        }
+        var alert = egret.gui.Alert.show("你确定花费2能量购买点击加速效果吗?", "购买", this.buySkill0Buy, "确定", "取消", true, true, this);
+        alert.skinName = skin.simple.AlertSkin;
+    };
+    p.buySkill0Buy = function (evt) {
+        if (evt.detail == egret.gui.Alert.FIRST_BUTTON) {
+            if (ActorInfo.miMoney >= 2) {
+                console.log("点击加速");
+                ActorInfo.miMoney -= 2;
+                ToolBarUI.getInstance().userUI.update();
+                //暂时点击加倍处理,时间60秒处理
+                ActorInfo.clickPower = ActorInfo.normalClick;
+                ActorInfo.clickPowerLeftTime = 60;
+                this.initSkill0Timer();
+                this._timer0.start();
+            }
+            else {
+                var alert = egret.gui.Alert.show("所需能量不足，购买失败", "提示", null, "确定");
+                alert.skinName = skin.simple.AlertSkin;
+            }
+        }
+        else {
+            console.log("取消点击加速");
+        }
+    };
+    p.initSkill0Timer = function () {
+        if (this._timer0 == null) {
+            this._timer0 = new egret.Timer(1000);
+            this._timer0.addEventListener(egret.TimerEvent.TIMER, this.onSkill0Tick, this);
+            this._timer0.stop();
+        }
+    };
+    p.onSkill0Tick = function (evt) {
+        ActorInfo.clickPowerLeftTime--;
+        if (this._diTile.skillCD0.visible == false) {
+            this._diTile.skillCD0.visible = true;
+        }
+        this._diTile.skillCD0.text = DateUtil.getHMS(ActorInfo.clickPowerLeftTime);
+        if (ActorInfo.clickPowerLeftTime <= 0) {
+            this._diTile.skillCD0.visible = false;
+            ActorInfo.clickPowerLeftTime = 0;
+            ActorInfo.clickPower = 0;
+            this._timer0.stop();
+        }
+    };
+    p.onAddDiBtn = function (evt) {
     };
     p.onDiClick = function (evt) {
         var index = this._diTile.diTileList.indexOf(evt.currentTarget);

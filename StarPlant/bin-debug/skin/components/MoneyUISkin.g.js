@@ -25,30 +25,30 @@ var skin;
             p.allMoney_i = function () {
                 var t = new egret.gui.Button();
                 this.allMoney = t;
-                this.__s(t, ["height", "skinName", "width", "x", "y"], [42, new egret.gui.ButtonSkin("allMoneyIcon_up"), 62, 0, 2]);
+                this.__s(t, ["height", "skinName", "width", "x", "y"], [52, new egret.gui.ButtonSkin("allMoneyIcon_up_png"), 78, 7, -3]);
                 return t;
             };
             p.curMoney_i = function () {
                 var t = new egret.gui.Button();
                 this.curMoney = t;
-                this.__s(t, ["height", "skinName", "width", "x", "y"], [41, new egret.gui.ButtonSkin("curMoneyIcon_up"), 65, 0, 2]);
+                this.__s(t, ["height", "skinName", "width", "x", "y"], [51, new egret.gui.ButtonSkin("curMoneyIcon_up_png"), 80, 6, -3]);
                 return t;
             };
             p.moneyState_i = function () {
                 var t = new egret.gui.Label();
                 this.moneyState = t;
-                this.__s(t, ["size", "text", "textColor", "x", "y"], [20, "总财", 0x000000, 119, 12]);
+                this.__s(t, ["bold", "size", "text", "textColor", "x", "y"], [true, 20, "总财", 0xDAED0D, 76, 13]);
                 return t;
             };
             p.moneyVal_i = function () {
                 var t = new egret.gui.Label();
                 this.moneyVal = t;
-                this.__s(t, ["size", "text", "width", "x", "y"], [20, "999999", 81, 160, 12]);
+                this.__s(t, ["bold", "size", "text", "textAlign", "textColor", "width", "x", "y"], [true, 20, "999999", "right", 0xE8E002, 205, 137, 12]);
                 return t;
             };
             p.__3_i = function () {
                 var t = new egret.gui.UIAsset();
-                t.source = "userCoinUI";
+                this.__s(t, ["source", "x", "y"], ["userCoinUI_png", 31, 1]);
                 return t;
             };
             MoneyUISkin._skinParts = ["moneyState", "moneyVal", "allMoney", "curMoney"];

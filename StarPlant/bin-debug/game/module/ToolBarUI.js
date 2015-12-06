@@ -40,10 +40,18 @@ var ToolBarUI = (function (_super) {
     p.initEvent = function () {
         console.log("添加事件了==================");
         this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onShopBtn, this);
-        this.addSpeedBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onAddSpeed, this);
+        this.addSpeedBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onAddSpeed, this); //加速点击
+        this.addSpeedBtn.addEventListener(egret.TouchEvent.TOUCH_BEGIN, this.onLastAddSpeedDwon, this); //加速按下中
+        this.addSpeedBtn.addEventListener(egret.TouchEvent.TOUCH_END, this.onLastAddSpeedUp, this); //加速抬起
         this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onHelp, this);
         this.setBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSet, this);
         this.buyDi.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onBuyDi, this);
+    };
+    p.onLastAddSpeedDwon = function (evt) {
+        ActorInfo.isDowAction = true;
+    };
+    p.onLastAddSpeedUp = function (evt) {
+        ActorInfo.isDowAction = false;
     };
     p.onAddSpeed = function (evt) {
         ModelLocator.getInstance().dispatchEvent(new LogicEvent(LogicEvent.CLICK_NORMAL_ADD_SPEED, false, false));

@@ -25,7 +25,7 @@ var skin;
             p.fullMark_i = function () {
                 var t = new egret.gui.UIAsset();
                 this.fullMark = t;
-                this.__s(t, ["height", "source", "width", "x", "y"], [16, "diFull_png", 25, 30, 29]);
+                this.__s(t, ["height", "source", "width", "x", "y"], [16, "diFull_png", 18, 27, 31]);
                 return t;
             };
             p.num_i = function () {

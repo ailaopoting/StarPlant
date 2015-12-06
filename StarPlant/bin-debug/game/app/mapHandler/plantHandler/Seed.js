@@ -33,7 +33,14 @@ var Seed = (function (_super) {
         }
     };
     p.onGrow = function (evt) {
-        this._curPoint++;
+        this._curPoint += ActorInfo.diGrowBase + ActorInfo.growPower;
+        if (ActorInfo.growPower > 0) {
+            console.log("土地效果加成中...");
+        }
+        if (ActorInfo.isDowAction && ActorInfo.downPower) {
+            this._curPoint += ActorInfo.DOWN_ADD_VAL;
+            console.log("按下效果加成中...");
+        }
         this.growStateHandle();
     };
     p.onAddGrow = function (addPoint) {
@@ -92,8 +99,10 @@ var Seed = (function (_super) {
         ModelLocator.getInstance().addEventListener(LogicEvent.CLICK_NORMAL_ADD_SPEED, this.onNormalAdd, this);
     };
     p.onNormalAdd = function (evt) {
-        console.log("点击加速了!!!");
-        this._curPoint++;
+        this._curPoint += ActorInfo.normalClick + ActorInfo.clickPower;
+        if (ActorInfo.clickPower > 0) {
+            console.log("点击效果加成中...");
+        }
         this.growStateHandle();
     };
     p.onGlowGet = function (evt) {

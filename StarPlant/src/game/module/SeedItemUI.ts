@@ -70,7 +70,7 @@ class SeedItemUI extends egret.gui.SkinnableComponent{
             var nameList: string[] = ["神器:","机甲:","神兽:","植物"];
             for(var j: number = 0;j < 10;j++) //todo 默认植物种类，这块需要实际处理
             {
-                item.push(new SeedItem({ id:10000,source: "10000_1_png",num: 10,introduce: nameList[i] + "这是一颗神奇的种子"}));
+                item.push(new SeedItem({ id:10000,source: "10000_5_png",num: 10,introduce: nameList[i] + "这是一颗神奇的种子"}));
             }
         }
         console.log("种子列表已经实例化");
@@ -150,7 +150,7 @@ class SeedItemUI extends egret.gui.SkinnableComponent{
             var allPosArr;
             if(this.otherInitData.clickIndex != null) //点击地块打开此面板的
             {
-                posArr = this.getCanPos(this.otherInitData.clickIndex);
+                posArr = this.getCanPos(Math.floor(this.otherInitData.clickIndex/6));
             }
             if(this.otherInitData.buyBlockIndex != null) //通过地块购买面板打开此面板的,按次序选择一个可用地块
             {

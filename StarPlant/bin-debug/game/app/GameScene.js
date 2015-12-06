@@ -35,7 +35,7 @@ var GameScene = (function () {
         this.curMapProcess.init();
         GameScene.getInstance().show();
         //引导处理
-        GuideUI.getInstance().show();
+        //GuideUI.getInstance().show();
     };
     p.onCompleteScene = function (evt) {
         //切换开始，可能需要加载UI显示，对于大型游戏,要关闭加载UI等操作

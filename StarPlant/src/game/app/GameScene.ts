@@ -51,7 +51,7 @@ class GameScene {
         GameScene.getInstance().show();
         
         //引导处理
-        GuideUI.getInstance().show();
+        //GuideUI.getInstance().show();
         
         
     }

@@ -40,7 +40,7 @@ var skin;
             };
             p.__3_i = function () {
                 var t = new egret.gui.UIAsset();
-                this.__s(t, ["source", "x", "y"], ["userIcon", 0, -1]);
+                this.__s(t, ["source", "x", "y"], ["userIcon_png", 0, -1]);
                 return t;
             };
             p.userIconRes_i = function () {

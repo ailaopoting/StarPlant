@@ -30,6 +30,7 @@ var game_file_list = [
 	"bin-debug/game/core/NetRequestManager.js",
 	"bin-debug/game/core/SoundManager.js",
 	"bin-debug/game/core/util/AnchorUtil.js",
+	"bin-debug/game/core/util/DateUtil.js",
 	"bin-debug/game/core/util/HashMap.js",
 	"bin-debug/game/module/buyDiUI/BuyDiBlock.js",
 	"bin-debug/game/module/BuyDiUI.js",

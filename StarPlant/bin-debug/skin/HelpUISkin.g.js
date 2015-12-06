@@ -23,7 +23,7 @@ var skin;
         p.introduce_i = function () {
             var t = new egret.gui.Label();
             this.introduce = t;
-            this.__s(t, ["bold", "height", "size", "textAlign", "textColor", "width", "x", "y"], [true, 248, 20, "left", 0x1423F2, 384, 67, 157]);
+            this.__s(t, ["bold", "height", "size", "textAlign", "textColor", "verticalAlign", "width", "x", "y"], [true, 248, 18, "left", 0x1423F2, "middle", 384, 66, 175]);
             return t;
         };
         p.okBtn_i = function () {

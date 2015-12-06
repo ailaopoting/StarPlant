@@ -23,7 +23,7 @@ var skin;
         p.buyDi_i = function () {
             var t = new egret.gui.Button();
             this.buyDi = t;
-            this.__s(t, ["skinName", "x", "y"], [new egret.gui.ButtonSkin("buyDi_up_png", "buyDi_down_png"), 357, 416]);
+            this.__s(t, ["skinName", "x", "y"], [new egret.gui.ButtonSkin("buyDi_up_png", "buyDi_down_png"), 420, 434]);
             return t;
         };
         p.eventTip_i = function () {
@@ -55,7 +55,7 @@ var skin;
         p.goPkBtn_i = function () {
             var t = new egret.gui.Button();
             this.goPkBtn = t;
-            this.__s(t, ["skinName", "x", "y"], [new egret.gui.ButtonSkin("goPk_up_png", "goPk_down_png", "goPk_disable_png"), 388, 118]);
+            this.__s(t, ["skinName", "x", "y"], [new egret.gui.ButtonSkin("goPk_up_png", "goPk_down_png", "goPk_disable_png"), 411, 145]);
             return t;
         };
         p.helpBtn_i = function () {
@@ -67,13 +67,13 @@ var skin;
         p.nextDiBtn_i = function () {
             var t = new egret.gui.Button();
             this.nextDiBtn = t;
-            this.__s(t, ["height", "skinName", "width", "x", "y"], [40, new egret.gui.ButtonSkin("diNextBtn_up_png", "diNextBtn_down_png", "diNextBtn_disable_png"), 38, 315, 412]);
+            this.__s(t, ["height", "skinName", "width", "x", "y"], [40, new egret.gui.ButtonSkin("diNextBtn_up_png", "diNextBtn_down_png", "diNextBtn_disable_png"), 38, 242, 545]);
             return t;
         };
         p.preDiBtn_i = function () {
             var t = new egret.gui.Button();
             this.preDiBtn = t;
-            this.__s(t, ["height", "skinName", "width", "x", "y"], [37, new egret.gui.ButtonSkin("diPreBtn_disable_png", "diPreBtn_down_png", "diPreBtn_disable_png"), 37, 0, 417]);
+            this.__s(t, ["height", "skinName", "width", "x", "y"], [37, new egret.gui.ButtonSkin("diPreBtn_disable_png", "diPreBtn_down_png", "diPreBtn_disable_png"), 37, 80, 548]);
             return t;
         };
         p.rankBtn_i = function () {
@@ -97,7 +97,7 @@ var skin;
         p.addSpeedBtn_i = function () {
             var t = new egret.gui.Button();
             this.addSpeedBtn = t;
-            this.__s(t, ["skinName", "x", "y"], [new egret.gui.ButtonSkin("addSpeed_up_png", "addSpeed_down_png", "addSpeed_disable_png"), 309, 217]);
+            this.__s(t, ["height", "skinName", "width", "x", "y"], [203, new egret.gui.ButtonSkin("addSpeed_up_png", "addSpeed_down_png", "addSpeed_disable_png"), 199, 290, 217]);
             return t;
         };
         ToolBarSkin._skinParts = ["giftBtn", "setBtn", "goPkBtn", "addSpeedBtn", "nextDiBtn", "goDoorBtn", "gloryBtn", "shopBtn", "preDiBtn", "rankBtn", "helpBtn", "eventTip", "buyDi"];

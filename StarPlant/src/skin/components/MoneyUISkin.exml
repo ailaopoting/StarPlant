@@ -6,9 +6,9 @@
 		<e:State name="normal"/>
 		<e:State name="disabled"/>
 	</e:states>
-	<e:UIAsset source="userCoinUI"/>
-	<e:Label id="moneyState" size="20" text="总财" textColor="0x000000" x="119" y="12"/>
-	<e:Label id="moneyVal" size="20" text="999999" width="81" x="160" y="12"/>
-	<e:Button id="allMoney" skinName="@ButtonSkin('allMoneyIcon_up')" x="0" y="2" width="62" height="42"/>
-	<e:Button id="curMoney" x="0" y="2" skinName="@ButtonSkin('curMoneyIcon_up')" width="65" height="41"/>
+	<e:UIAsset x="31" y="1" source="userCoinUI_png"/>
+	<e:Label id="moneyState" size="20" text="总财" x="76" y="13" textColor="0xDAED0D" bold="true"/>
+	<e:Label id="moneyVal" size="20" text="999999" width="205" y="12" x="137" textAlign="right" textColor="0xE8E002" bold="true"/>
+	<e:Button id="allMoney" width="78" height="52" skinName="@ButtonSkin('allMoneyIcon_up_png')" x="7" y="-3"/>
+	<e:Button id="curMoney" width="80" height="51" skinName="@ButtonSkin('curMoneyIcon_up_png')" x="6" y="-3"/>
 </e:Skin>

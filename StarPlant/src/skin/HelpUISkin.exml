@@ -7,6 +7,6 @@
 		<e:State name="disabled"/>
 	</e:states>
 	<e:UIAsset source="uiBgStyle1_png" scale9Grid="12,17,271,244" width="415" height="346" textColor="0x0F3DC6" size="17" x="42" y="109"/>
-	<e:Label id="introduce" textColor="0x1423F2" size="20" bold="true" width="384" height="248" x="67" y="157" textAlign="left"/>
+	<e:Label id="introduce" textColor="0x1423F2" bold="true" width="384" height="248" textAlign="left" size="18" y="175" x="66" verticalAlign="middle"/>
 	<e:Button id="okBtn" label="确认" skinName="@ButtonSkin('btnStyle1_png')" width="69" height="39" size="25" y="389" x="214"/>
 </e:Skin>
