@@ -1,0 +1,11 @@
+[
+    [
+		{"id" : "1", "x" : "660", "y":"500", "name":"小美", "model":"goomba_png", "m_mc":"npc00", "type":"3", "task":"1"},
+		{"id" : "2", "x" : "1010", "y":"500", "name":"小萌", "model":"goomba_png", "m_mc":"npc01", "type":"3", "task":"2"},
+		{"id" : "3", "x" : "1350", "y":"500", "name":"小娟", "model":"goomba_png", "m_mc":"npc04", "type":"3", "task":"3"},
+		{"id" : "4", "x" : "1819", "y":"500", "name":"小玲", "model":"goomba_png", "m_mc":"npc03", "type":"3", "task":"4"},
+		{"id" : "5", "x" : "2139", "y":"500", "name":"小爱", "model":"goomba_png", "m_mc":"npc02", "type":"3", "task":"5"},
+		{"id" : "6", "x" : "2500", "y":"500", "name":"小英", "model":"goomba_png", "m_mc":"npc00", "type":"3", "task":"6"},
+		{"id" : "7", "x" : "2800", "y":"500", "name":"前往太平村", "model":"goomba_png", "m_mc":"npc05", "type":"4", "task":"2"}
+    ]
+]

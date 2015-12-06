@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="48" height="48" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:UIAsset id="unSelect" source="buyDiBlock1_png" left="0" right="0" top="0" bottom="0"/>
+	<e:UIAsset id="select" source="buyDiBlock2_png" left="0" right="0" top="0" bottom="0"/>
+	<e:Label id="num" text="1" textColor="0xEFCC09" textAlign="center" x="4" y="6" width="40" bold="true"/>
+	<e:UIAsset id="canGetMark" source="buyDiBlockTip_png" x="31" y="1"/>
+	<e:UIAsset id="fullMark" height="16" width="25" source="diFull_png" x="30" y="29"/>
+</e:Skin>

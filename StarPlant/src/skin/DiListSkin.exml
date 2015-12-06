@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="500" height="800" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing" currentState="0">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:UIAsset source="di_png" x="11" y="251"/>
+	<e:Button id="diTile0" label="按钮" x="30" y="262" skinName="@ButtonSkin('btnStyle1_png')" width="114" height="81" alpha="0"/>
+	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="114" label="按钮" height="81" alpha="0" id="diTile1" x="146" y="262"/>
+	<e:Button width="114" id="diTile2" skinName="@ButtonSkin('btnStyle1_png')" label="按钮" height="81" alpha="0" x="39" y="345"/>
+	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="114" label="按钮" height="81" alpha="0" id="diTile3" x="160" y="349"/>
+	<e:Button width="128" id="diTile4" skinName="@ButtonSkin('btnStyle1_png')" label="按钮" height="104" alpha="0" x="39" y="444"/>
+	<e:Button skinName="@ButtonSkin('btnStyle1_png')" width="142" label="按钮" height="104" alpha="0" id="diTile5" x="176" y="442"/>
+</e:Skin>

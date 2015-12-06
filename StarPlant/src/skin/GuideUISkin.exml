@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="500" height="800" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:UIAsset source="guideUiBg_png" x="15" y="150"/>
+	<e:Button id="selectBtn0" width="135" alpha="0" touchChildren="true" touchEnabled="true" skinName="@ButtonSkin('btnStyle1_png')" x="89" y="307"/>
+	<e:Button id="selectBtn1" width="135" alpha="0" touchChildren="true" touchEnabled="true" skinName="@ButtonSkin('btnStyle1_png')" x="295" y="308"/>
+</e:Skin>

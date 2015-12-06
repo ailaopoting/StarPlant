@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="480" height="800" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing" xmlns:ns1="*">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+<e:State name="normal"/>
+<e:State name="disabled"/>
+</e:states>
+	<e:UIAsset source="bgA_jpg" horizontalCenter="0" verticalCenter="80" visible="false"/>
+	<e:UIAsset id="bg_1" source="bg-1_png" bottom="1" left="0" right="0" height="260"/>
+	<e:Button id="btn1" width="140" textAlign="center" verticalAlign="top" bold="true" height="50" label="重新开始" left="142" bottom="105"/>
+	<e:Button id="btn2" width="80" height="50" bold="true" label="复活" size="30" bottom="195" left="20"/>
+	<e:Button id="btn3" label="商城" bold="true" right="17" bottom="185"/>
+	<e:Button id="btn4" label="切换地图" height="50" bold="true" left="141" width="141" bottom="195"/>
+	<ns1:StateGameUI x="122" y="397"/>
+	<ns1:IntroGameUI x="271" y="370"/>
+</e:Skin>

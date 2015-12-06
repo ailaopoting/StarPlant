@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="480" height="800" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:UIAsset source="bg_png" top="0" bottom="0" left="0" right="0"/>
+	<e:Button id="btn1" width="140" height="50" bottom="166" horizontalCenter="-83" size="30" skinName="@ButtonSkin('an-3_jpg','an-4_jpg')"/>
+	<e:Label id="label1" width="402" height="122" size="28" horizontalCenter="9" text="剑宗首重勇剑，主张拔剑无理，攻剑。气宗首重智剑，主张用剑无招，拒剑。术宗首重仁剑，主张弃剑无危，守剑。" textAlign="left" textColor="0xB9F701" top="165"/>
+	<e:Button id="btn2" skinName="@ButtonSkin('an-1_jpg','an-2_jpg')" width="140" height="50" horizontalCenter="87" bottom="166"/>
+	<e:UIAsset source="an-5_png" scale9Grid="81,7,212,22" size="30" height="50" horizontalCenter="1.5" bottom="301"/>
+	<e:UIAsset source="an-6_png" scale9Grid="80,8,212,20" height="50" horizontalCenter="1.5" bottom="242"/>
+	<e:TextInput id="input2" width="210" horizontalCenter="34" x="169" height="36" bottom="250"/>
+	<e:TextInput id="input1" width="210" height="36" horizontalCenter="34" x="169" bottom="310"/>
+	<e:Label size="60" text="《剑仙》" horizontalCenter="2" top="85"/>
+</e:Skin>

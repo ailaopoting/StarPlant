@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Egret</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="full-screen" content="true"/>
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="x5-fullscreen" content="true"/>
+    <meta name="360-fullscreen" content="true"/>
+    <style>
+        html, body {
+            -ms-touch-action: none;
+            background: #888888;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            height: 100%;
+        }
+    </style>
+
+    <!--这个标签为通过egret提供的第三方库的方式生成的 javascript 文件-->
+    <!--modules_files_start-->
+	<script egret="lib" src="libs/modules/egret/egret.js" src-release="libs/modules/egret/egret.min.js"></script>
+	<script egret="lib" src="libs/modules/egret/egret.web.js" src-release="libs/modules/egret/egret.web.min.js"></script>
+	<script egret="lib" src="libs/modules/game/game.js" src-release="libs/modules/game/game.min.js"></script>
+	<script egret="lib" src="libs/modules/game/game.web.js" src-release="libs/modules/game/game.web.min.js"></script>
+	<script egret="lib" src="libs/modules/res/res.js" src-release="libs/modules/res/res.min.js"></script>
+	<script egret="lib" src="libs/modules/gui/gui.js" src-release="libs/modules/gui/gui.min.js"></script>
+	<script egret="lib" src="libs/modules/tween/tween.js" src-release="libs/modules/tween/tween.min.js"></script>
+	<script egret="lib" src="libs/modules/puremvc/puremvc.js" src-release="libs/modules/puremvc/puremvc.min.js"></script>
+	<!--modules_files_end-->
+
+    <!--这个标签为不通过egret提供的第三方库的方式使用的 javascript 文件，请将这些文件放在libs下，但不要放在modules下面。-->
+    <!--other_libs_files_start-->
+    <!--other_libs_files_end-->
+
+    <!--这个标签会被替换为项目中所有的 javascript 文件-->
+    <!--game_files_start-->
+	<script egret="game" src="bin-debug/AssetAdapter.js"></script>
+	<script egret="game" src="bin-debug/game/core/util/DisplayUtil.js"></script>
+	<script egret="game" src="bin-debug/game/app/GameScene.js"></script>
+	<script egret="game" src="bin-debug/game/app/MapProcessor.js"></script>
+	<script egret="game" src="bin-debug/game/app/mapHandler/MapProcessor_fight.js"></script>
+	<script egret="game" src="bin-debug/game/app/mapHandler/MapProcessor_plant.js"></script>
+	<script egret="game" src="bin-debug/game/app/mapHandler/plantHandler/Seed.js"></script>
+	<script egret="game" src="bin-debug/game/app/MapModel.js"></script>
+	<script egret="game" src="bin-debug/game/core/components/PageBar.js"></script>
+	<script egret="game" src="bin-debug/game/core/data/actorInfo/DiTitleInfo.js"></script>
+	<script egret="game" src="bin-debug/game/core/data/actorInfo/ItemBagInfo.js"></script>
+	<script egret="game" src="bin-debug/game/core/data/ActorInfo.js"></script>
+	<script egret="game" src="bin-debug/game/core/data/SceneType.js"></script>
+	<script egret="game" src="bin-debug/game/core/event/eventItem/LogicEvent.js"></script>
+	<script egret="game" src="bin-debug/game/core/event/ModelLocator.js"></script>
+	<script egret="game" src="bin-debug/game/core/LayerManger.js"></script>
+	<script egret="game" src="bin-debug/game/core/net/RequestType.js"></script>
+	<script egret="game" src="bin-debug/game/core/NetRequestManager.js"></script>
+	<script egret="game" src="bin-debug/game/core/SoundManager.js"></script>
+	<script egret="game" src="bin-debug/game/core/util/AnchorUtil.js"></script>
+	<script egret="game" src="bin-debug/game/core/util/HashMap.js"></script>
+	<script egret="game" src="bin-debug/game/module/buyDiUI/BuyDiBlock.js"></script>
+	<script egret="game" src="bin-debug/game/module/BuyDiUI.js"></script>
+	<script egret="game" src="bin-debug/game/module/codeRule/UiRule.js"></script>
+	<script egret="game" src="bin-debug/game/module/DiTileListUI.js"></script>
+	<script egret="game" src="bin-debug/game/module/GuideUI.js"></script>
+	<script egret="game" src="bin-debug/game/module/HelpUI.js"></script>
+	<script egret="game" src="bin-debug/game/module/seedItemUI/SeedItem.js"></script>
+	<script egret="game" src="bin-debug/game/module/SeedItemUI.js"></script>
+	<script egret="game" src="bin-debug/game/module/SetUI.js"></script>
+	<script egret="game" src="bin-debug/game/module/toolBarUI/MoneyUI.js"></script>
+	<script egret="game" src="bin-debug/game/module/toolBarUI/UserUI.js"></script>
+	<script egret="game" src="bin-debug/game/module/ToolBarUI.js"></script>
+	<script egret="game" src="bin-debug/LoadingUI.js"></script>
+	<script egret="game" src="bin-debug/Main.js"></script>
+	<script egret="game" src="bin-debug/skin/BuyDiSkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/components/BuyDiBlockSkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/components/MoneyUISkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/components/SeedItemSkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/components/UserUISkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/DiListSkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/GuideUISkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/HelpUISkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/SeedItemUISkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/SetUISkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/simple/AlertSkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/simple/RadioButtonSkin.g.js"></script>
+	<script egret="game" src="bin-debug/skin/ToolBarSkin.g.js"></script>
+	<!--game_files_end-->
+</head>
+<body>
+
+    <div style="margin: auto;width: 100%;height: 100%;" class="egret-player"
+         data-entry-class="Main"
+         data-orientation="auto"
+         data-scale-mode="showAll"
+         data-resolution-mode="retina"
+         data-frame-rate="60"
+         data-content-width="500"
+         data-content-height="800"
+         data-show-paint-rect="false"
+         data-multi-fingered="2"
+         data-show-fps="false" data-show-log="false"
+         data-log-filter="" data-show-fps-style="x:0,y:0,size:30,textColor:0x00c200,bgAlpha:0.9">
+    </div>
+    <script>
+        egret.runEgret();
+    </script>
+</body>
+</html>

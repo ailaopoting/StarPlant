@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="500" height="800" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableContainer"/>
+	<w:Declarations/>
+	<e:states>
+<e:State name="normal"/>
+<e:State name="disabled"/>
+</e:states>
+	<e:UIAsset source="uiBgStyle1_png" scale9Grid="12,17,271,244" x="109" y="147" height="338"/>
+	<e:UIAsset source="kuang_png" x="121" y="422" width="271"/>
+	<e:Button id="goDi" skinName="@ButtonSkin('btnStyle1_png')" height="28" textAlign="center" width="85" label="前往" x="125" y="434" bold="true" textColor="0xE9FE08" size="18"/>
+	<e:Button id="goPlant" skinName="@ButtonSkin('btnStyle1_png')" textColor="0xE9FE08" height="28" textAlign="center" bold="true" width="85" label="一键种" x="215" y="434" size="18"/>
+	<e:Button id="goGet" width="85" textColor="0xE9FE08" textAlign="center" bold="true" skinName="@ButtonSkin('btnStyle1_png')" label="一键收" height="28" x="304" y="434" size="18"/>
+	<e:UIAsset source="resIcon_png" x="230" y="388"/>
+	<e:Button id="addDiBtn" skinName="@ButtonSkin('buyDiBlockMark_up_png','buyDiBlockMark_down_png')" x="131" y="342"/>
+	<e:Button skinName="@ButtonSkin('closeBtn_png')" width="29" height="25" id="closeBtn" x="376" y="145"/>
+	<e:Scroller id="scroller" width="264" height="223" x="125" y="168">
+		<e:Group id="group" width="262" height="221"/>
+	</e:Scroller>
+</e:Skin>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin width="152" height="112" xmlns:e="http://ns.egret-labs.org/egret" xmlns:w="http://ns.egret-labs.org/wing">
+	<w:HostComponent name="egret.gui.SkinnableComponent"/>
+	<w:Declarations/>
+	<e:states>
+		<e:State name="normal"/>
+		<e:State name="disabled"/>
+	</e:states>
+	<e:UIAsset source="userIcon" x="0" y="-1"/>
+	<e:Label id="userName" x="1" y="82" textColor="0x000000" size="22" width="80" textAlign="center" text="999"/>
+	<e:UIAsset id="userIconRes" height="68" width="68" x="8" y="5"/>
+	<e:Label text="能量" textColor="0x050000" size="25" y="11" x="81"/>
+	<e:Label textColor="0x050000" size="25" text="x" y="39" x="83"/>
+	<e:Label id="miVal" textColor="0xF31408" size="25" x="96" y="41"/>
+</e:Skin>
